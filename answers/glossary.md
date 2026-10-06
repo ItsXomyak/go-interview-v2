@@ -5,8 +5,8 @@
 Краткие описания терминов, которые встречаются в ответах. Термины в ответах — ссылки сюда. В каждой статье: что это, как устроено, на что обратить внимание; внизу — вопросы, где термин встречается.
 
 **Рантайм и планировщик:** [Netpoller](#netpoller) · [G-M-P](#gmp) · [Горутина](#goroutine) · [GOMAXPROCS](#gomaxprocs) · [hchan](#hchan) · [sync.Pool](#sync-pool) · [GODEBUG](#godebug)
-**Память и GC:** [Стек и куча](#stack-heap) · [Escape analysis](#escape-analysis) · [Аллокатор](#allocator) · [GC](#gc) · [STW](#stw) · [Write barrier](#write-barrier) · [Green Tea GC](#green-tea) · [Выравнивание и padding](#alignment)
-**Компилятор и линкер:** [SSA](#ssa) · [Constant folding](#constant-folding) · [Bounds check](#bounds-check) · [Jump table](#jump-table) · [Register ABI](#register-abi) · [TCO](#tco) · [Export data](#export-data) · [Build cache](#build-cache) · [Линкер](#linker) · [Dead code elimination](#dce) · [go:linkname](#linkname) · [Read-only секция](#rodata)
+**Память и GC:** [Стек и куча](#stack-heap) · [Escape analysis](#escape-analysis) · [Аллокатор](#allocator) · [GC](#gc) · [STW](#stw) · [Write barrier](#write-barrier) · [Green Tea GC](#green-tea) · [Выравнивание и padding](#alignment) · [Кэш-линия](#cache-line)
+**Компилятор и линкер:** [SSA](#ssa) · [Constant folding](#constant-folding) · [Bounds check](#bounds-check) · [Jump table](#jump-table) · [pdqsort](#pdqsort) · [Register ABI](#register-abi) · [TCO](#tco) · [Export data](#export-data) · [Build cache](#build-cache) · [Линкер](#linker) · [Dead code elimination](#dce) · [go:linkname](#linkname) · [Read-only секция](#rodata)
 **Типы и данные:** [iface / eface / itab](#interface-layout) · [Дескриптор типа](#type-descriptor) · [Рефлексия](#reflection) · [GC shape stenciling](#gc-shape) · [Замыкание (funcval)](#funcval) · [Swiss Tables](#swiss-tables) · [Дополнительный код](#twos-complement) · [IEEE 754](#ieee754) · [UTF-8](#utf8) · [SIMD](#simd)
 **Окружение и другие языки:** [cgroup](#cgroup) · [GIL](#gil) · [JIT и AOT](#jit-aot)
 
@@ -114,7 +114,7 @@
 - Что попадёт на стек, а что в кучу, решает [escape analysis](#escape-analysis), а не программист.
 - Чем меньше объектов в куче, тем меньше работы у GC — отсюда оптимизации «меньше аллокаций».
 
-📍 Встречается: [1.1 · 1](1.1-basics.md#q1-1-01) · [1.1 · 2](1.1-basics.md#q1-1-02) · [1.1 · 4](1.1-basics.md#q1-1-04) · [1.1 · 6](1.1-basics.md#q1-1-06) · [1.1 · 7](1.1-basics.md#q1-1-07) · [1.1 · 8](1.1-basics.md#q1-1-08) · [1.1 · 13](1.1-basics.md#q1-1-13) · [1.1 · 16](1.1-basics.md#q1-1-16) · [1.1 · 21](1.1-basics.md#q1-1-21) · [1.1 · 24](1.1-basics.md#q1-1-24) · [1.2 · 6](1.2-strings.md#q1-2-06) · [1.2 · 7](1.2-strings.md#q1-2-07) <!--refs:stack-heap-->
+📍 Встречается: [1.1 · 1](1.1-basics.md#q1-1-01) · [1.1 · 2](1.1-basics.md#q1-1-02) · [1.1 · 4](1.1-basics.md#q1-1-04) · [1.1 · 6](1.1-basics.md#q1-1-06) · [1.1 · 7](1.1-basics.md#q1-1-07) · [1.1 · 8](1.1-basics.md#q1-1-08) · [1.1 · 13](1.1-basics.md#q1-1-13) · [1.1 · 16](1.1-basics.md#q1-1-16) · [1.1 · 21](1.1-basics.md#q1-1-21) · [1.1 · 24](1.1-basics.md#q1-1-24) · [1.2 · 6](1.2-strings.md#q1-2-06) · [1.2 · 7](1.2-strings.md#q1-2-07) · [1.3 · 1](1.3-slices.md#q1-3-01) · [1.3 · 4](1.3-slices.md#q1-3-04) · [1.3 · 12](1.3-slices.md#q1-3-12) <!--refs:stack-heap-->
 
 ---
 
@@ -140,7 +140,7 @@
 - Объекты больше 32 КБ выделяются прямо из `mheap`; мелкие объекты без указателей (до 16 байт) склеиваются tiny-аллокатором.
 - Отданная память всегда обнулена — отсюда гарантия zero value.
 
-📍 Встречается: [1.1 · 6](1.1-basics.md#q1-1-06) · [1.1 · 8](1.1-basics.md#q1-1-08) <!--refs:allocator-->
+📍 Встречается: [1.1 · 6](1.1-basics.md#q1-1-06) · [1.1 · 8](1.1-basics.md#q1-1-08) · [1.3 · 4](1.3-slices.md#q1-3-04) <!--refs:allocator-->
 
 ---
 
@@ -153,7 +153,7 @@
 - Когда запускаться, решает `GOGC` (по умолчанию 100 — когда куча выросла на 100% от живой); `GOMEMLIMIT` (с Go 1.19) — мягкий лимит памяти.
 - Объекты не перемещаются, поэтому указатели стабильны; поколений нет — каждый цикл обходит всю живую кучу.
 
-📍 Встречается: [1.1 · 1](1.1-basics.md#q1-1-01) · [1.1 · 2](1.1-basics.md#q1-1-02) · [1.1 · 6](1.1-basics.md#q1-1-06) · [1.1 · 7](1.1-basics.md#q1-1-07) · [1.1 · 25](1.1-basics.md#q1-1-25) <!--refs:gc-->
+📍 Встречается: [1.1 · 1](1.1-basics.md#q1-1-01) · [1.1 · 2](1.1-basics.md#q1-1-02) · [1.1 · 6](1.1-basics.md#q1-1-06) · [1.1 · 7](1.1-basics.md#q1-1-07) · [1.1 · 25](1.1-basics.md#q1-1-25) · [1.3 · 9](1.3-slices.md#q1-3-09) · [1.3 · 12](1.3-slices.md#q1-3-12) · [1.3 · 14](1.3-slices.md#q1-3-14) <!--refs:gc-->
 
 ---
 
@@ -203,6 +203,17 @@
 
 ---
 
+<a id="cache-line"></a>
+### Кэш-линия (cache line)
+Минимальный блок, которым процессор обменивается с памятью через кэш, — обычно 64 байта.
+
+- Читая один элемент, CPU загружает всю линию; при последовательном проходе он ещё и подгружает следующие линии заранее (prefetch). Поэтому данные, лежащие подряд (слайс), обрабатываются в разы быстрее разбросанных по куче (связный список).
+- Если две горутины часто пишут в разные переменные из одной линии, линия «скачет» между ядрами — это false sharing.
+
+📍 Встречается: [1.3 · 12](1.3-slices.md#q1-3-12) <!--refs:cache-line-->
+
+---
+
 ## Компилятор и линкер
 
 <a id="ssa"></a>
@@ -233,7 +244,7 @@ Static Single Assignment — промежуточное представлени
 - Компилятор сравнивает индекс с длиной как беззнаковые числа — одно сравнение ловит и отрицательный индекс, и выход за верхнюю границу.
 - **BCE** (bounds check elimination) убирает проверку, если компилятор доказал, что индекс в пределах. Оставшиеся проверки показывает `go build -gcflags="-d=ssa/check_bce/debug=1"`.
 
-📍 Встречается: [1.1 · 11](1.1-basics.md#q1-1-11) <!--refs:bounds-check-->
+📍 Встречается: [1.1 · 11](1.1-basics.md#q1-1-11) · [1.3 · 2](1.3-slices.md#q1-3-02) <!--refs:bounds-check-->
 
 ---
 
@@ -244,6 +255,17 @@ Static Single Assignment — промежуточное представлени
 - В Go с 1.19 (на `amd64` и `arm64`) для больших `switch` по целым и строкам; для маленьких компилятор использует бинарный поиск.
 
 📍 Встречается: [1.1 · 15](1.1-basics.md#q1-1-15) · [1.1 · 22](1.1-basics.md#q1-1-22) <!--refs:jump-table-->
+
+---
+
+<a id="pdqsort"></a>
+### pdqsort
+Pattern-defeating quicksort — алгоритм сортировки в `sort` и `slices` с Go 1.19.
+
+- Гибрид: quicksort для общего случая, insertion sort для маленьких участков, heapsort как страховка от худшего случая O(n²); распознаёт уже отсортированные и почти отсортированные данные.
+- O(n log n) в худшем случае, сортирует на месте, **нестабилен**: для стабильной сортировки есть `SortStableFunc` / `sort.SliceStable`.
+
+📍 Встречается: [1.3 · 10](1.3-slices.md#q1-3-10) · [1.3 · 15](1.3-slices.md#q1-3-15) · [1.3 · 16](1.3-slices.md#q1-3-16) <!--refs:pdqsort-->
 
 ---
 
@@ -353,7 +375,7 @@ Static Single Assignment — промежуточное представлени
 - Внутри: размер, выравнивание, kind, хеш, функция сравнения, карта указателей для GC, имя, методы.
 - Используют интерфейсы, type switch, map (хеш и сравнение ключей), GC и пакет `reflect`.
 
-📍 Встречается: [1.1 · 18](1.1-basics.md#q1-1-18) · [1.1 · 22](1.1-basics.md#q1-1-22) <!--refs:type-descriptor-->
+📍 Встречается: [1.1 · 18](1.1-basics.md#q1-1-18) · [1.1 · 22](1.1-basics.md#q1-1-22) · [1.3 · 1](1.3-slices.md#q1-3-01) <!--refs:type-descriptor-->
 
 ---
 
@@ -367,7 +389,7 @@ Static Single Assignment — промежуточное представлени
 
 ⚠️ Правило: если можно без рефлексии (дженерики, интерфейсы, кодогенерация), лучше без неё.
 
-📍 Встречается: [1.1 · 2](1.1-basics.md#q1-1-02) · [1.1 · 4](1.1-basics.md#q1-1-04) · [1.1 · 13](1.1-basics.md#q1-1-13) · [1.1 · 17](1.1-basics.md#q1-1-17) · [1.1 · 24](1.1-basics.md#q1-1-24) · [1.2 · 6](1.2-strings.md#q1-2-06) <!--refs:reflection-->
+📍 Встречается: [1.1 · 2](1.1-basics.md#q1-1-02) · [1.1 · 4](1.1-basics.md#q1-1-04) · [1.1 · 13](1.1-basics.md#q1-1-13) · [1.1 · 17](1.1-basics.md#q1-1-17) · [1.1 · 24](1.1-basics.md#q1-1-24) · [1.2 · 6](1.2-strings.md#q1-2-06) · [1.3 · 15](1.3-slices.md#q1-3-15) · [1.3 · 16](1.3-slices.md#q1-3-16) <!--refs:reflection-->
 
 ---
 

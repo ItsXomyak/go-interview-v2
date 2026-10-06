@@ -30,6 +30,7 @@
 
 ---
 
+<a id="stage-1"></a>
 ## Этап 1. Язык Go
 
 <a id="s1-1"></a>
@@ -79,25 +80,26 @@
 
 🛠 RLE-сжатие · P: ch-2, ch-17, ch-23, ch-26
 
+<a id="s1-3"></a>
 ### 1.3 Массивы и слайсы
-📖 [GI · README](https://github.com/goavengers/go-interview/blob/master/README.md) · 🌐 [Go Blog: Slices internals](https://go.dev/blog/slices-intro)
+📖 ✅ [**Ответы на весь блок**](answers/1.3-slices.md) · [GI · README](https://github.com/goavengers/go-interview/blob/master/README.md) · 🌐 [Go Blog: Slices internals](https://go.dev/blog/slices-intro)
 
-- [ ] Массив vs слайс. Массив — значение: что из этого следует?
-- [ ] Как устроен слайс (ptr, len, cap)? Сколько весит заголовок слайса?
-- [ ] Способы создать слайс. nil-слайс vs пустой слайс; можно ли `append` в nil? Как проверить на пустоту?
-- [ ] Как работает `append` и рост capacity (старая и новая формула)? Можно ли `append` к массиву? Напиши свой `append`
-- [ ] Общий базовый массив: когда изменение одного слайса видно в другом?
-- [ ] Слайс передан в функцию: изменится ли он снаружи при изменении элемента? А при `append`?
-- [ ] Реслайсинг `s[a:b]`; полное выражение `s[a:b:c]` — зачем?
-- [ ] Как скопировать слайс (`copy`, трюк с `append`)? Как слить два слайса?
-- [ ] Удаление элемента с сохранением порядка и без
-- [ ] Удалить дубликаты из слайса без переаллокации — можно ли?
-- [ ] Как сделать из слайса массив?
-- [ ] Что лучше — связный список или массив? Почему (локальность, кэш CPU)?
-- [ ] Big-O всех операций со слайсом
-- [ ] Утечка памяти через подслайс — как избежать?
-- [ ] Пакет `slices` (Go 1.21+)
-- [ ] Как отсортировать слайс структур по полю (`sort.Slice`, `slices.SortFunc`)?
+- [ ] [Массив vs слайс. Массив — значение: что из этого следует?](answers/1.3-slices.md#q1-3-01)
+- [ ] [Как устроен слайс (ptr, len, cap)? Сколько весит заголовок слайса?](answers/1.3-slices.md#q1-3-02)
+- [ ] [Способы создать слайс. nil-слайс vs пустой слайс; можно ли `append` в nil? Как проверить на пустоту?](answers/1.3-slices.md#q1-3-03)
+- [ ] [Как работает `append` и рост capacity (старая и новая формула)? Можно ли `append` к массиву? Напиши свой `append`](answers/1.3-slices.md#q1-3-04)
+- [ ] [Общий базовый массив: когда изменение одного слайса видно в другом?](answers/1.3-slices.md#q1-3-05)
+- [ ] [Слайс передан в функцию: изменится ли он снаружи при изменении элемента? А при `append`?](answers/1.3-slices.md#q1-3-06)
+- [ ] [Реслайсинг `s[a:b]`; полное выражение `s[a:b:c]` — зачем?](answers/1.3-slices.md#q1-3-07)
+- [ ] [Как скопировать слайс (`copy`, трюк с `append`)? Как слить два слайса?](answers/1.3-slices.md#q1-3-08)
+- [ ] [Удаление элемента с сохранением порядка и без](answers/1.3-slices.md#q1-3-09)
+- [ ] [Удалить дубликаты из слайса без переаллокации — можно ли?](answers/1.3-slices.md#q1-3-10)
+- [ ] [Как сделать из слайса массив?](answers/1.3-slices.md#q1-3-11)
+- [ ] [Что лучше — связный список или массив? Почему (локальность, кэш CPU)?](answers/1.3-slices.md#q1-3-12)
+- [ ] [Big-O всех операций со слайсом](answers/1.3-slices.md#q1-3-13)
+- [ ] [Утечка памяти через подслайс — как избежать?](answers/1.3-slices.md#q1-3-14)
+- [ ] [Пакет `slices` (Go 1.21+)](answers/1.3-slices.md#q1-3-15)
+- [ ] [Как отсортировать слайс структур по полю (`sort.Slice`, `slices.SortFunc`)?](answers/1.3-slices.md#q1-3-16)
 
 🛠 Two Sum · Пересечение слайсов · P: ch-19
 
@@ -219,6 +221,7 @@
 
 ---
 
+<a id="stage-2"></a>
 ## Этап 2. Конкурентность и runtime
 
 ### 2.1 Потоки, горутины, планировщик
@@ -346,6 +349,7 @@
 
 ---
 
+<a id="stage-3"></a>
 ## Этап 3. Инструменты, прод, ОС
 
 ### 3.1 Модули и сборка
@@ -458,6 +462,7 @@
 
 ---
 
+<a id="stage-4"></a>
 ## Этап 4. Backend
 
 ### 4.1 Сети и протоколы
@@ -704,6 +709,7 @@
 
 ---
 
+<a id="stage-5"></a>
 ## Этап 5. Архитектура и системы
 
 ### 5.1 ООП и принципы проектирования
@@ -800,8 +806,10 @@
 
 ---
 
+<a id="stage-6"></a>
 ## Этап 6. Практика
 
+<a id="s6-1"></a>
 ### 6.1 🌐 Алгоритмы и структуры данных
 📖 🌐 [Яндекс Хендбук «Основы алгоритмов»](https://contest.yandex.ru/tracks/algorithms) · 🌐 [Яндекс «Тренировки по алгоритмам»](https://yandex.ru/yaintern/training/algorithm-training) · 🌐 [NeetCode Roadmap](https://neetcode.io/roadmap) / [NeetCode 150](https://neetcode.io/practice/practice/neetcode150) · 🌐 [LeetCode Top Interview 150](https://leetcode.com/studyplan/top-interview-150/) · [TIH · шпаргалка по темам](https://www.techinterviewhandbook.org/algorithms/study-cheatsheet/) · [TIH · план на 3 месяца](https://www.techinterviewhandbook.org/coding-interview-study-plan/) · [TIH · Grind 75 / Blind 75](https://www.techinterviewhandbook.org/best-practice-questions/)
 
@@ -838,6 +846,7 @@
 - [ ] Уточнить условие и граничные случаи → озвучить идею и сложность → написать код → прогнать тесты руками
 - [ ] Уметь писать без автодополнения и без запуска кода
 
+<a id="s6-2"></a>
 ### 6.2 Live coding на конкурентность
 📖 [GI · popular_tasks](https://github.com/goavengers/go-interview/blob/master/docs/popular_tasks/README.md)
 
@@ -867,6 +876,7 @@
 - [ ] GCE · [Очистка неактивных сессий](https://github.com/loong/go-concurrency-exercises/tree/main/5-session-cleaner)
 - [ ] ⭐ Circuit breaker, Retry с jitter
 
+<a id="s6-3"></a>
 ### 6.3 Code review секция
 📖 🌐 [100 Go Mistakes](https://100go.co/)
 
@@ -919,8 +929,10 @@
 
 ---
 
+<a id="stage-7"></a>
 ## Этап 7. Перед собеседованием
 
+<a id="s7-1"></a>
 ### 7.1 Форматы собесов в бигтехе
 > По официальным страницам компаний и отчётам кандидатов за 2025–2026. Форматы меняются: перед собесом перечитай страницу компании.
 
@@ -949,6 +961,7 @@
 - [ ] SQL вживую, иногда с запуском запросов (4.5)
 - [ ] В system design считать нагрузку и мощности: RPS, объёмы, latency numbers (5.5)
 
+<a id="s7-2"></a>
 ### 7.2 Поведенческие вопросы и секция о проектах
 📖 [TIH · Behavioral interview](https://www.techinterviewhandbook.org/behavioral-interview/) · [TIH · 30 частых вопросов](https://www.techinterviewhandbook.org/behavioral-interview-questions/) · [TIH · как оценивают](https://www.techinterviewhandbook.org/behavioral-interview-rubrics/) · [TIH · для Senior](https://www.techinterviewhandbook.org/behavioral-interview-senior-candidates/) · [TIH · самопрезентация](https://www.techinterviewhandbook.org/self-introduction/) · [TIH · вопросы к интервьюеру](https://www.techinterviewhandbook.org/final-questions/)
 
@@ -978,6 +991,7 @@
 - [ ] Чек-лист подготовки
 - [ ] Mock-интервью: минимум одно по алгоритмам, одно по Go и одно по system design
 
+<a id="s7-4"></a>
 ### 7.4 Резюме, моки, оффер
 📖 [TIH · Resume](https://www.techinterviewhandbook.org/resume/) · [TIH · Mock interviews](https://www.techinterviewhandbook.org/mock-interviews/) · [TIH · Negotiation](https://www.techinterviewhandbook.org/negotiation/) · [TIH · правила переговоров](https://www.techinterviewhandbook.org/negotiation-rules/) · [TIH · Compensation](https://www.techinterviewhandbook.org/understanding-compensation/) · [TIH · выбор компании](https://www.techinterviewhandbook.org/choosing-between-companies/) · [TIH · уровни](https://www.techinterviewhandbook.org/engineering-levels/)
 
@@ -991,6 +1005,7 @@
 
 ---
 
+<a id="resources"></a>
 ## Ресурсы
 
 **Go**
