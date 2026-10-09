@@ -47,6 +47,7 @@
 - [ ] [`new` vs `make`](answers/1.1-basics.md#q1-1-08)
 - [ ] [Отличия `int`, `int32`, `int64`. Чем `int` отличается от `uint`? От чего зависит размер `int`?](answers/1.1-basics.md#q1-1-09)
 - [ ] [Сколько памяти занимают `int32`/`int64`, их предельные значения? Что при переполнении?](answers/1.1-basics.md#q1-1-10)
+- [ ] [Зачем столько числовых типов (`int8`…`int64`, `uint8`…`uint64`)? Сделал бы ты так же на месте авторов Go?](answers/1.1-basics.md#q1-1-26)
 - [ ] ⭐ [Почему `len` возвращает `int`, а не `uint`?](answers/1.1-basics.md#q1-1-11)
 - [ ] [Что будет при делении int на 0 и float на 0?](answers/1.1-basics.md#q1-1-12)
 - [ ] [Преобразования между строками и числами (`strconv`). Можно ли сделать `string(int)` и `int(string)`?](answers/1.1-basics.md#q1-1-13)
@@ -103,86 +104,91 @@
 
 🛠 Two Sum · Пересечение слайсов · P: ch-19
 
+<a id="s1-4"></a>
 ### 1.4 Map и хеш-таблицы
-📖 [GI · podolsky #6–7](https://github.com/goavengers/go-interview/blob/master/docs/podolsky/README.md)
+📖 ✅ [**Ответы на весь блок**](answers/1.4-maps.md) · [GI · podolsky #6–7](https://github.com/goavengers/go-interview/blob/master/docs/podolsky/README.md)
 
-- [ ] Как работает хеш-таблица? Что такое хеш-функция?
-- [ ] Методы разрешения коллизий (цепочки, открытая адресация)
-- [ ] Как устроена map в Go под капотом (классическая: `hmap`, бакеты)? Сколько элементов в бакете?
-- [ ] Что такое эвакуация, когда она происходит и как её избежать?
-- [ ] ⭐ Map на Swiss Tables (Go 1.24+): чем отличается от старой реализации?
-- [ ] Как происходит поиск по ключу?
-- [ ] Какая хеш-функция используется в map?
-- [ ] Что вернётся по несуществующему ключу? Как проверить наличие ключа?
-- [ ] Чтение и запись в nil-map
-- [ ] Что может быть ключом map?
-- [ ] Почему порядок итерации по map случайный?
-- [ ] Почему нельзя взять адрес элемента `&m[k]`? Как изменить поле структуры, лежащей в map?
-- [ ] Освобождает ли `delete` память? Как избежать утечек памяти в слайсах и map?
-- [ ] Big-O операций с map
-- [ ] Сколько весят слайс, map, пустая строка, int?
-- [ ] ⭐ Как реализовать разреженный массив на Go?
+- [ ] [Как работает хеш-таблица? Что такое хеш-функция?](answers/1.4-maps.md#q1-4-01)
+- [ ] [Методы разрешения коллизий (цепочки, открытая адресация)](answers/1.4-maps.md#q1-4-02)
+- [ ] [Как устроена map в Go под капотом (классическая: `hmap`, бакеты)? Сколько элементов в бакете?](answers/1.4-maps.md#q1-4-03)
+- [ ] [Что такое эвакуация, когда она происходит и как её избежать?](answers/1.4-maps.md#q1-4-04)
+- [ ] ⭐ [Map на Swiss Tables (Go 1.24+): чем отличается от старой реализации?](answers/1.4-maps.md#q1-4-05)
+- [ ] [Как происходит поиск по ключу?](answers/1.4-maps.md#q1-4-06)
+- [ ] [Какая хеш-функция используется в map?](answers/1.4-maps.md#q1-4-07)
+- [ ] [Что вернётся по несуществующему ключу? Как проверить наличие ключа?](answers/1.4-maps.md#q1-4-08)
+- [ ] [Чтение и запись в nil-map](answers/1.4-maps.md#q1-4-09)
+- [ ] [Что может быть ключом map?](answers/1.4-maps.md#q1-4-10)
+- [ ] [Почему порядок итерации по map случайный?](answers/1.4-maps.md#q1-4-11)
+- [ ] [Почему нельзя взять адрес элемента `&m[k]`? Как изменить поле структуры, лежащей в map?](answers/1.4-maps.md#q1-4-12)
+- [ ] [Освобождает ли `delete` память? Как избежать утечек памяти в слайсах и map?](answers/1.4-maps.md#q1-4-13)
+- [ ] [Big-O операций с map](answers/1.4-maps.md#q1-4-14)
+- [ ] [Сколько весят слайс, map, пустая строка, int?](answers/1.4-maps.md#q1-4-15)
+- [ ] ⭐ [Как реализовать разреженный массив на Go?](answers/1.4-maps.md#q1-4-16)
 
 🛠 Group Anagrams · Top K · P: ch-6
 
+<a id="s1-5"></a>
 ### 1.5 Функции, методы, замыкания, defer
+📖 ✅ [**Ответы на весь блок**](answers/1.5-functions.md)
 
-- [ ] Зачем нужны функции? Функции как значения (first-class)
-- [ ] Чем полезны анонимные и вариативные функции?
-- [ ] Замыкание: что это, примеры, где полезно
-- [ ] Рекурсия: примеры, какие проблемы (глубина стека, производительность)?
-- [ ] Передача аргументов: по значению или по ссылке? Какие типы ведут себя как ссылки?
-- [ ] Функция vs метод. Как создать свой метод? Можно ли объявить метод на типе из другого пакета?
-- [ ] Value receiver vs pointer receiver — когда что? Method set
-- [ ] Функция `init`: зачем нужна, порядок вызова
-- [ ] `defer`: зачем, порядок вызова, когда вычисляются аргументы
-- [ ] Захват значений переменных в `defer`; `defer` и именованный результат
-- [ ] Как вернуть ошибку изнутри `defer` (не просто залогировать)?
-- [ ] ⭐ Функциональные опции (functional options)
-- [ ] Напиши `swap(&x, &y)`
+- [ ] [Зачем нужны функции? Функции как значения (first-class)](answers/1.5-functions.md#q1-5-01)
+- [ ] [Чем полезны анонимные и вариативные функции?](answers/1.5-functions.md#q1-5-02)
+- [ ] [Замыкание: что это, примеры, где полезно](answers/1.5-functions.md#q1-5-03)
+- [ ] [Рекурсия: примеры, какие проблемы (глубина стека, производительность)?](answers/1.5-functions.md#q1-5-04)
+- [ ] [Передача аргументов: по значению или по ссылке? Какие типы ведут себя как ссылки?](answers/1.5-functions.md#q1-5-05)
+- [ ] [Функция vs метод. Как создать свой метод? Можно ли объявить метод на типе из другого пакета?](answers/1.5-functions.md#q1-5-06)
+- [ ] [Value receiver vs pointer receiver — когда что? Method set](answers/1.5-functions.md#q1-5-07)
+- [ ] [Функция `init`: зачем нужна, порядок вызова](answers/1.5-functions.md#q1-5-08)
+- [ ] [`defer`: зачем, порядок вызова, когда вычисляются аргументы](answers/1.5-functions.md#q1-5-09)
+- [ ] [Захват значений переменных в `defer`; `defer` и именованный результат](answers/1.5-functions.md#q1-5-10)
+- [ ] [Как вернуть ошибку изнутри `defer` (не просто залогировать)?](answers/1.5-functions.md#q1-5-11)
+- [ ] ⭐ [Функциональные опции (functional options)](answers/1.5-functions.md#q1-5-12)
+- [ ] [Напиши `swap(&x, &y)`](answers/1.5-functions.md#q1-5-13)
 
 
+<a id="s1-6"></a>
 ### 1.6 Структуры, интерфейсы, указатели
-📖 [GI · README](https://github.com/goavengers/go-interview/blob/master/README.md) · [GI · podolsky #2–3, #13, #25](https://github.com/goavengers/go-interview/blob/master/docs/podolsky/README.md) · 🌐 [Russ Cox: Go Data Structures: Interfaces](https://research.swtch.com/interfaces)
+📖 ✅ [**Ответы на весь блок**](answers/1.6-structs-interfaces.md) · [GI · README](https://github.com/goavengers/go-interview/blob/master/README.md) · [GI · podolsky #2–3, #13, #25](https://github.com/goavengers/go-interview/blob/master/docs/podolsky/README.md) · 🌐 [Russ Cox: Go Data Structures: Interfaces](https://research.swtch.com/interfaces)
 
-- [ ] Что такое структура, зачем? Теги структур
-- [ ] Можно ли сравнивать структуры? Пустая структура `struct{}` — зачем?
-- [ ] Чем пустой интерфейс отличается от пустой структуры? Почему в канал-сигнал передают `struct{}`, а не `interface{}`?
-- [ ] ⭐ Почему два `new(struct{})` могут иметь одинаковый адрес?
-- [ ] Выравнивание полей (alignment/padding), размер структуры
-- [ ] Что такое указатели? Когда их использовать?
-- [ ] Что такое интерфейс? Утиная типизация; чем отличается от интерфейсов в Java/PHP?
-- [ ] Неявная реализация интерфейсов — плюсы и минусы. Как заставить компилятор проверить, что тип реализует интерфейс?
-- [ ] Интерфейс как структура: `iface`, `eface`, `itab`
-- [ ] Пустой интерфейс, `any` — когда использовать?
-- [ ] nil-интерфейс ≠ интерфейс с nil-значением. Как вызов метода на интерфейсе, не равном nil, может упасть с nil pointer dereference?
-- [ ] Почему говорят, что у nil в Go есть тип? Как получить переменную, которая «не nil, но nil»?
-- [ ] Сравнение интерфейсов
-- [ ] Type assertion и `switch v := x.(type)`: способы применения
-- [ ] ⭐ Тип-сумма: что это и как реализовать на Go?
-- [ ] Где объявлять интерфейс: на стороне потребителя или реализации? Почему?
-- [ ] Embedding — это наследование? Почему нет?
-- [ ] Почему нельзя копировать структуру с `sync.Mutex` внутри? Как это ловит `go vet`?
-- [ ] ⭐ Когда интерфейс вызывает аллокацию?
-- [ ] Сериализация: что это, зачем; JSON-теги, неэкспортируемые поля
-- [ ] Реализуй интерфейс площади для `Circle` и `Square`
+- [ ] [Что такое структура, зачем? Теги структур](answers/1.6-structs-interfaces.md#q1-6-01)
+- [ ] [Можно ли сравнивать структуры? Пустая структура `struct{}` — зачем?](answers/1.6-structs-interfaces.md#q1-6-02)
+- [ ] [Чем пустой интерфейс отличается от пустой структуры? Почему в канал-сигнал передают `struct{}`, а не `interface{}`?](answers/1.6-structs-interfaces.md#q1-6-03)
+- [ ] ⭐ [Почему два `new(struct{})` могут иметь одинаковый адрес?](answers/1.6-structs-interfaces.md#q1-6-04)
+- [ ] [Выравнивание полей (alignment/padding), размер структуры](answers/1.6-structs-interfaces.md#q1-6-05)
+- [ ] [Что такое указатели? Когда их использовать?](answers/1.6-structs-interfaces.md#q1-6-06)
+- [ ] [Что такое интерфейс? Утиная типизация; чем отличается от интерфейсов в Java/PHP?](answers/1.6-structs-interfaces.md#q1-6-07)
+- [ ] [Неявная реализация интерфейсов — плюсы и минусы. Как заставить компилятор проверить, что тип реализует интерфейс?](answers/1.6-structs-interfaces.md#q1-6-08)
+- [ ] [Интерфейс как структура: `iface`, `eface`, `itab`](answers/1.6-structs-interfaces.md#q1-6-09)
+- [ ] [Пустой интерфейс, `any` — когда использовать?](answers/1.6-structs-interfaces.md#q1-6-10)
+- [ ] [nil-интерфейс ≠ интерфейс с nil-значением. Как вызов метода на интерфейсе, не равном nil, может упасть с nil pointer dereference?](answers/1.6-structs-interfaces.md#q1-6-11)
+- [ ] [Почему говорят, что у nil в Go есть тип? Как получить переменную, которая «не nil, но nil»?](answers/1.6-structs-interfaces.md#q1-6-12)
+- [ ] [Сравнение интерфейсов](answers/1.6-structs-interfaces.md#q1-6-13)
+- [ ] [Type assertion и `switch v := x.(type)`: способы применения](answers/1.6-structs-interfaces.md#q1-6-14)
+- [ ] ⭐ [Тип-сумма: что это и как реализовать на Go?](answers/1.6-structs-interfaces.md#q1-6-15)
+- [ ] [Где объявлять интерфейс: на стороне потребителя или реализации? Почему?](answers/1.6-structs-interfaces.md#q1-6-16)
+- [ ] [Embedding — это наследование? Почему нет?](answers/1.6-structs-interfaces.md#q1-6-17)
+- [ ] [Почему нельзя копировать структуру с `sync.Mutex` внутри? Как это ловит `go vet`?](answers/1.6-structs-interfaces.md#q1-6-18)
+- [ ] ⭐ [Когда интерфейс вызывает аллокацию?](answers/1.6-structs-interfaces.md#q1-6-19)
+- [ ] [Сериализация: что это, зачем; JSON-теги, неэкспортируемые поля](answers/1.6-structs-interfaces.md#q1-6-20)
+- [ ] [Реализуй интерфейс площади для `Circle` и `Square`](answers/1.6-structs-interfaces.md#q1-6-21)
 
 🛠 задача МТС на выравнивание структур · P: ch-3, ch-10
 
+<a id="s1-7"></a>
 ### 1.7 Ошибки, panic, recover
-📖 [GI · podolsky #14](https://github.com/goavengers/go-interview/blob/master/docs/podolsky/README.md)
+📖 ✅ [**Ответы на весь блок**](answers/1.7-errors.md) · [GI · podolsky #14](https://github.com/goavengers/go-interview/blob/master/docs/podolsky/README.md)
 
-- [ ] Что такое `error`? Как правильно обрабатывать ошибки?
-- [ ] Sentinel errors, кастомные типы ошибок, обёртки — когда что?
-- [ ] Зачем врапать ошибки? Способы врапинга (`%w`, свой тип с `Unwrap`)
-- [ ] `errors.Is` vs `errors.As` vs `==`; `errors.AsType`
-- [ ] Несколько ошибок сразу (`errors.Join`)
-- [ ] Recoverable vs fatal ошибки: как это сделано в пакете `net` и как делать в современном Go?
-- [ ] Что такое panic? Когда её использовать? Что будет при `panic(nil)`?
-- [ ] Как работает `recover`? Поймает ли он панику из другой горутины? Что нельзя поймать?
-- [ ] ⭐ Чем отличаются panic, fatal error и throw? Почему конкурентная запись в map роняет процесс так, что `recover` не поможет?
-- [ ] Порядок выполнения при панике
-- [ ] Ошибка в `defer f.Close` — теряем? Как не потерять?
+- [ ] [Что такое `error`? Как правильно обрабатывать ошибки?](answers/1.7-errors.md#q1-7-01)
+- [ ] [Sentinel errors, кастомные типы ошибок, обёртки — когда что?](answers/1.7-errors.md#q1-7-02)
+- [ ] [Зачем врапать ошибки? Способы врапинга (`%w`, свой тип с `Unwrap`)](answers/1.7-errors.md#q1-7-03)
+- [ ] [`errors.Is` vs `errors.As` vs `==`; `errors.AsType`](answers/1.7-errors.md#q1-7-04)
+- [ ] [Несколько ошибок сразу (`errors.Join`)](answers/1.7-errors.md#q1-7-05)
+- [ ] [Recoverable vs fatal ошибки: как это сделано в пакете `net` и как делать в современном Go?](answers/1.7-errors.md#q1-7-06)
+- [ ] [Что такое panic? Когда её использовать? Что будет при `panic(nil)`?](answers/1.7-errors.md#q1-7-07)
+- [ ] [Как работает `recover`? Поймает ли он панику из другой горутины? Что нельзя поймать?](answers/1.7-errors.md#q1-7-08)
+- [ ] ⭐ [Чем отличаются panic, fatal error и throw? Почему конкурентная запись в map роняет процесс так, что `recover` не поможет?](answers/1.7-errors.md#q1-7-09)
+- [ ] [Порядок выполнения при панике](answers/1.7-errors.md#q1-7-10)
+- [ ] [Ошибка в `defer f.Close` — теряем? Как не потерять?](answers/1.7-errors.md#q1-7-11)
 
 🛠 P: ch-7, ch-12
 
@@ -398,7 +404,7 @@
 - [ ] ⭐ Histogram vs summary: как считаются перцентили, почему нельзя усреднять p99?
 - [ ] Что можно увидеть с помощью трейсинга? Distributed tracing, OpenTelemetry, context propagation
 - [ ] Что такое APM (application performance management)?
-- [ ] Методики RED / USE; four golden signals
+- [ ] Методики RED / USE; four golden signals. Какие 4 метрики мониторить обязательно — у сервера (CPU, память, диск, сеть) и у сервиса (latency, traffic, errors, saturation)?
 - [ ] Алертинг: на что ставить алерты (симптомы vs причины)?
 - [ ] pprof: какие профили бывают, как встроить в приложение, пример использования, overhead
 - [ ] Как читать flame graph?
@@ -427,6 +433,7 @@
 - [ ] Zombie и orphan процессы; ⭐ PID 1 в контейнере
 - [ ] cgroups и namespaces — на чём построены контейнеры
 - [ ] systemd: unit-файлы, `systemctl`, `journalctl -u`
+- [ ] Запусти Go-программу на Linux-сервере и открой её в интернет: сборка под `GOOS=linux`, systemd-юнит, `0.0.0.0` vs `127.0.0.1`, firewall (`ufw` / `iptables`), nginx + TLS, домен
 - [ ] OOM killer: когда приходит, как понять, что процесс убит им?
 - [ ] Linux-инструменты: `top`/`htop`, `ps`, `lsof`, `ss`/`netstat`, `strace`, `tcpdump`, `df`/`du`, `free`, `vmstat`, `iostat`, `dmesg`, `journalctl`, `dig`, `curl`
 - [ ] Как найти процесс, который занял порт? Что делать, если кончилось место на диске / дескрипторы / память?
@@ -440,6 +447,7 @@
 - [ ] Rolling update; feature flags
 - [ ] SLA, SLO, SLI, error budget
 - [ ] Какие инструменты CI/CD знаешь?
+- [ ] Опиши по шагам деплой через CI/CD: от `git push` до прода (линтеры и тесты, сборка образа, registry, выкатка, откат). Как это работает под капотом (webhook, runner, артефакты, секреты)?
 - [ ] Как обеспечить непрерывность и стабильность деплоя?
 - [ ] С какими проблемами при деплое сталкивался, как митигировал?
 - [ ] 12-factor app
@@ -476,9 +484,11 @@
 - [ ] 🌐 Flow control vs congestion control
 - [ ] Что такое сокет и порт? ⭐ `bind` / `listen` / `accept`
 - [ ] Что такое NAT?
-- [ ] Что такое DNS, как работает резолвинг? Что такое TTL записи?
+- [ ] Что такое DNS и где он «находится» (`/etc/hosts`, кэш ОС, резолвер провайдера, root → TLD → authoritative)? Как работает резолвинг? Что такое TTL записи?
 - [ ] Что такое proxy? Forward vs reverse proxy; nginx как reverse proxy
 - [ ] Что такое CDN?
+- [ ] Что такое HTTP и как он работает: протокол «запрос — ответ» поверх TCP, stateless, из чего состоят запрос и ответ
+- [ ] Как сервер понимает, что пришёл HTTP-запрос (схема URL и порт, первая строка запроса, ALPN в TLS)? Что будет, если отправить FTP-запрос на HTTP-сервер?
 - [ ] HTTP vs HTTPS; за счёт чего достигается безопасность в HTTPS?
 - [ ] SSL vs TLS; 🌐 TLS 1.3 handshake, сертификаты и цепочка доверия, mTLS
 - [ ] HTTP/1.1 vs HTTP/2; 🌐 HTTP/3 и QUIC — зачем?
@@ -647,6 +657,8 @@
 - [ ] Типичные утечки (незакрытые `rows` и т.п.)
 - [ ] N+1, SQL-инъекции, prepared statements
 - [ ] Есть ли в Go хороший ORM? sqlx, pgx, gorm, sqlc — плюсы и минусы
+- [ ] Какой драйвер Postgres используешь и почему: pgx vs `database/sql` + `lib/pq`? Можно ли использовать pgx через `database/sql`?
+- [ ] Зачем библиотеки, почему не написать подключение к Postgres самому (wire protocol, аутентификация SCRAM, TLS, пул, типы, prepared statements)?
 - [ ] Транзакции в Go: `defer tx.Rollback`, как прокинуть транзакцию через слои
 - [ ] Retry при сбоях БД: какие ошибки можно повторять, а какие нет?
 - [ ] Миграции (golang-migrate, goose); миграции без даунтайма (expand / contract, новая колонка `NOT NULL`, индекс на живой таблице)
@@ -673,6 +685,8 @@
 - [ ] Консистентность кэша и БД: в каком порядке обновлять и инвалидировать?
 - [ ] Cache stampede: что это и как защититься?
 - [ ] Redis: структуры данных, persistence (RDB / AOF), eviction-политики, почему однопоточный Redis быстрый?
+- [ ] Ключу поставили TTL 24 часа, потом перезапустили Redis — что будет с ключом и его TTL? Сохраняет ли Redis данные на диск?
+- [ ] Почему не взять обычную map в Go вместо Redis? А map + Postgres вместо Redis? Локальный кэш vs распределённый
 - [ ] Горячие ключи и большие ключи — чем опасны?
 - [ ] ⭐ Redis Sentinel vs Redis Cluster
 - [ ] ⭐ Pub/Sub и Streams в Redis
@@ -692,7 +706,7 @@
 - [ ] Kafka: топик, партиция, offset, consumer group, ребалансировка
 - [ ] 🌐 Kafka: репликация, leader, ISR, `acks=0/1/all`, `min.insync.replicas`
 - [ ] 🌐 Kafka: идемпотентный продюсер, транзакции, exactly-once semantics
-- [ ] Коммит offset: авто vs ручной; что будет при падении консьюмера до и после коммита?
+- [ ] Кто и куда коммитит offset (консьюмер → `__consumer_offsets`)? Авто vs ручной; что будет при падении консьюмера до и после коммита?
 - [ ] Consumer lag: что это, как мониторить?
 - [ ] 🌐 Retention и log compaction
 - [ ] Ключ партиционирования, горячие партиции; сколько партиций делать?
@@ -811,7 +825,7 @@
 
 <a id="s6-1"></a>
 ### 6.1 🌐 Алгоритмы и структуры данных
-📖 🌐 [Яндекс Хендбук «Основы алгоритмов»](https://contest.yandex.ru/tracks/algorithms) · 🌐 [Яндекс «Тренировки по алгоритмам»](https://yandex.ru/yaintern/training/algorithm-training) · 🌐 [NeetCode Roadmap](https://neetcode.io/roadmap) / [NeetCode 150](https://neetcode.io/practice/practice/neetcode150) · 🌐 [LeetCode Top Interview 150](https://leetcode.com/studyplan/top-interview-150/) · [TIH · шпаргалка по темам](https://www.techinterviewhandbook.org/algorithms/study-cheatsheet/) · [TIH · план на 3 месяца](https://www.techinterviewhandbook.org/coding-interview-study-plan/) · [TIH · Grind 75 / Blind 75](https://www.techinterviewhandbook.org/best-practice-questions/)
+📖 🧩 [**100 задач по паттернам, план и шаблоны на Go**](ALGORITHMS.md) · 🌐 [Яндекс Хендбук «Основы алгоритмов»](https://contest.yandex.ru/tracks/algorithms) · 🌐 [Яндекс «Тренировки по алгоритмам»](https://yandex.ru/yaintern/training/algorithm-training) · 🌐 [NeetCode Roadmap](https://neetcode.io/roadmap) / [NeetCode 150](https://neetcode.io/practice/practice/neetcode150) · 🌐 [LeetCode Top Interview 150](https://leetcode.com/studyplan/top-interview-150/) · [TIH · шпаргалка по темам](https://www.techinterviewhandbook.org/algorithms/study-cheatsheet/) · [TIH · план на 3 месяца](https://www.techinterviewhandbook.org/coding-interview-study-plan/) · [TIH · Grind 75 / Blind 75](https://www.techinterviewhandbook.org/best-practice-questions/)
 
 Теория:
 - [ ] Big-O по времени и памяти; амортизированная сложность (почему `append` — O(1) в среднем)
@@ -819,7 +833,7 @@
 - [ ] Структуры данных и сложность операций: массив, связный список, стек, очередь, дек, хеш-таблица, куча, дерево, граф, trie
 - [ ] Граничные случаи: пустой ввод, один элемент, дубликаты, отрицательные числа, переполнение (разделы «Corner cases» в TIH)
 
-Паттерны (на каждый решить 3–5 задач):
+Паттерны (на каждый решить 3–5 задач; подборка по паттернам — в [ALGORITHMS.md](ALGORITHMS.md#tasks)):
 - [ ] Два указателя · [TIH](https://www.techinterviewhandbook.org/algorithms/array/) · Trapping Rain Water (задача Яндекса)
 - [ ] Скользящее окно · [TIH](https://www.techinterviewhandbook.org/algorithms/array/) · Longest Substring
 - [ ] Префиксные суммы · [TIH](https://www.techinterviewhandbook.org/algorithms/array/)
@@ -949,6 +963,7 @@
 | Касперский | 3 этапа; глубоко про слайсы, интерфейсы, select, каналы | Планка «всё идеально» ([отзыв](https://dreamjob.ru/employers/104814/interviews)) |
 | [Amazon](https://www.amazon.jobs/content/en/how-we-hire/sde-ii-interview-prep) (FAANG) | 4 × 55 мин: кодинг, минимум один system design, Leadership Principles по STAR | Кодинг не привязан к языку, behavioral весит больше, чем в RU |
 | Плата (финтех) | Техническое: вопросы по Go + задача на горутины · code review (уточняющие вопросы, объяснение решений) · SQL-задача + вопросы по индексам · финал: рассказ об опыте | По фидбеку кандидата (2026): проверяют **применение** знаний БД на рабочем кейсе — составной индекс vs несколько отдельных, селективность, индекс по булеву полю; нормализацию и аномалии; на финале ждут сложный кейс с личным вкладом |
+| SayaSushi | Одно техническое интервью на широкую базу: проекты и выбор библиотек · типы Go, интерфейсы, строки, слайсы, GC · Redis (TTL, persistence, «почему не map») · Kafka vs RabbitMQ · HTTP, DNS · CI/CD, мониторинг · Linux | По отчёту кандидата (2026): на каждый ответ — «почему именно так?». Готовь обоснование своих решений и инструментов |
 
 Форматы FAANG и других западных компаний: [TIH · Interview formats](https://www.techinterviewhandbook.org/interview-formats-top-companies/)
 
@@ -967,6 +982,8 @@
 
 Подготовить истории по STAR (ситуация → задача → действия → результат):
 - [ ] Расскажи о себе (2 минуты)
+- [ ] Чем занимался на прошлой работе, какие фичи делал — коротко, с твоим вкладом и результатом
+- [ ] Почему выбрал именно эти библиотеки (бот для Telegram / WhatsApp, драйвер БД, логгер)? Чем они отличаются от альтернатив, по каким критериям выбираешь зависимость?
 - [ ] Архитектура последнего проекта: нарисовать, объяснить решения, узкие места, что будет при нагрузке ×10
 - [ ] Самый сложный баг или инцидент в проде: как нашёл, как починил, что изменили после
 - [ ] Конфликт или несогласие с решением в команде
